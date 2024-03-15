@@ -6,6 +6,7 @@
     import {
         Map,
         MapAttributionControl,
+        MapDrawControl,
         MapFullscreenControl,
         MapGeolocateControl,
         MapNavigationControl,
@@ -49,7 +50,7 @@
     <MapGeolocateControl on:geolocate={({detail}) => {console.log(detail.event)}}/>
     <MapFullscreenControl/>
     <MapNavigationControl/>
-
+    <MapDrawControl on:draw.create={({detail}) => {console.log(detail.event)}}/>
     <MapScaleControl/>
 
     <Legend/>

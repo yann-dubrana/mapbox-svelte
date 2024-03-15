@@ -3,6 +3,7 @@ export { default as MapLayer } from './Layer.svelte';
 export { default as MapSource } from './Source.svelte';
 export { default as MapAttributionControl } from './control/AttributionControl.svelte';
 export { default as MapCustomControl } from './control/CustomControl.svelte';
+export { default as MapDrawControl } from './control/DrawControl.svelte';
 export { default as MapFullscreenControl } from './control/FullscreenControl.svelte';
 export { default as MapGeolocateControl } from './control/GeolocateControl.svelte';
 export { default as MapNavigationControl } from './control/NavigationControl.svelte';
