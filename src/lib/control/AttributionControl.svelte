@@ -4,8 +4,8 @@
     import mapboxgl from 'mapbox-gl';
     import Control from "./model/Control.svelte";
 
+    export let position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'auto' = 'bottom-right';
     export let compact: boolean = false;
-    export let position: mapboxgl.ControlPosition = "bottom-right";
 
     let id = "attribution-id";
     let control: mapboxgl.AttributionControl;

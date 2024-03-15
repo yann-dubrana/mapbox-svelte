@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import {createEventDispatcher, onMount, setContext} from 'svelte';
+    import {createEventDispatcher, onDestroy, onMount, setContext} from 'svelte';
     import mapboxgl from 'mapbox-gl';
 
     export let token: string;
@@ -76,6 +76,13 @@
             loaded = true;
         });
 
+    });
+
+    onDestroy(() => {
+        events.forEach((event) => {
+            map?.off(event);
+        });
+        map?.remove();
     });
 
     function bindHandlers() {

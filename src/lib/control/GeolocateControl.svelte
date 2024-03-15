@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import {createEventDispatcher, onMount} from "svelte";
+    import {createEventDispatcher, getContext, onDestroy, onMount} from "svelte";
     import mapboxgl from 'mapbox-gl';
     import Control from "./model/Control.svelte";
 
@@ -13,9 +13,12 @@
     export let showUserLocation: boolean = true;
     export let trackUserLocation: boolean = false;
 
+    let map: mapboxgl.Map;
+    let contextMap: { get: CallableFunction } = getContext('map');
 
-    let control: mapboxgl.GeolocateControl;
     let dispatcher = createEventDispatcher();
+    let control: mapboxgl.GeolocateControl;
+
     const events = [
         'geolocate',
         'error',
@@ -26,6 +29,8 @@
 
 
     onMount(() => {
+
+        map = contextMap.get();
 
         control = new mapboxgl.GeolocateControl({
             fitBoundsOptions: fitBoundsOptions,
@@ -38,11 +43,17 @@
         });
 
         events.forEach(event => {
-            control.on(event, (e) => {
+            map.on(event, (e) => {
                 dispatcher(event, {event: e});
             });
         });
 
+    });
+
+    onDestroy(() => {
+        events.forEach(event => {
+            map.off(event);
+        });
     });
 
     export const trigger = () => {
