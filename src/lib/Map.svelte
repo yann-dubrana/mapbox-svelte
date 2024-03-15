@@ -10,21 +10,80 @@
     export let map: mapboxgl.Map | undefined = undefined;
 
     const mapEventDispatcher = createEventDispatcher();
-    setContext("map", {get: () => {return map}});
+    const events = [
+        'boxzoomcancel',
+        'boxzoomend',
+        'boxzoomstart',
+        'click',
+        'contextmenu',
+        'data',
+        'dataloading',
+        'dblclick',
+        'drag',
+        'dragend',
+        'dragstart',
+        'error',
+        'idle',
+        'load',
+        'mousedown',
+        'mouseenter',
+        'mouseleave',
+        'mousemove',
+        'mouseout',
+        'mouseover',
+        'mouseup',
+        'move',
+        'moveend',
+        'movestart',
+        'pitch',
+        'pitchend',
+        'pitchstart',
+        'remove',
+        'render',
+        'resize',
+        'rotate',
+        'rotateend',
+        'rotatestart',
+        'sourcedata',
+        'sourcedataloading',
+        'styledata',
+        'styledataloading',
+        'styleimagemissing',
+        'touchcancel',
+        'touchend',
+        'touchmove',
+        'touchstart',
+        'webglcontextlost',
+        'webglcontextrestored',
+        'wheel',
+        'zoom',
+        'zoomend',
+        'zoomstart',
+    ];
+
+    setContext("map", {
+        get: () => {
+            return map
+        }
+    });
+
     onMount(async () => {
 
         mapboxgl.accessToken = token;
         map = new mapboxgl.Map(configuration)
-        map.on('load', () => {bindHandlers(), loaded = true;});
+        map.on('load', () => {
+            bindHandlers();
+            loaded = true;
+        });
 
     });
 
     function bindHandlers() {
-
-        map.on("zoomend", (e) => {mapEventDispatcher("zoomend", {event:e})});
-        map.on("mousemove", (e) => {mapEventDispatcher("mousemove", {event:e})});
-        map.on("click", (e) => {mapEventDispatcher("click", {event:e})});
-
+        events.forEach((event) => {
+            map?.on(event, (e) => {
+                mapEventDispatcher(event, {event: e})
+            });
+        });
     }
 
     $: containerId = (!configuration) ? "map" : (typeof configuration.container === 'string') ? configuration.container : configuration.container.id;

@@ -1,4 +1,9 @@
-export { Map } from '$lib/components/Map.svelte';
-export { MapControl } from '$lib/components/Control';
-export { MapLayer } from '$lib/components/Layer';
-export { MapSource } from '$lib/components/Source';
+export { default as Map } from './Map.svelte';
+export { default as MapLayer } from './Layer.svelte';
+export { default as MapSource } from './Source.svelte';
+export { default as MapAttributionControl } from './control/AttributionControl.svelte';
+export { default as MapCustomControl } from './control/CustomControl.svelte';
+export { default as MapFullscreenControl } from './control/FullscreenControl.svelte';
+export { default as MapGeolocateControl } from './control/GeolocateControl.svelte';
+export { default as MapNavigationControl } from './control/NavigationControl.svelte';
+export { default as MapScaleControl } from './control/ScaleControl.svelte';

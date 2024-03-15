@@ -6,8 +6,11 @@ import LineArea from "./Layers/Line.svelte";
 import ControlSearch from "./Controls/ControlSearch.svelte";
 import ControlFeature from "./Controls/ControlFeature.svelte";
 
-let codePostal = "";
+
 export let selected = null;
+
+let autofit = false;
+let codePostal = "";
 
 let data = {"type": "FeatureCollection", "features": []}
 
@@ -39,7 +42,7 @@ $: {
 
 </script>
 
-<Source name="communes-33650" type="geojson" bind:data>
+<Source name="communes-33650" type="geojson" bind:data autofit fitBoundsOptions={{"padding": 180}}>
     <FillArea bind:selected/>
     <LineArea/>
 </Source>

@@ -1,5 +1,5 @@
 <script>
-    import Control from "$lib/Control.svelte";
+    import CustomControl from "$lib/control/CustomControl.svelte";
 
     export let codePostal = "";
 
@@ -13,9 +13,9 @@
 
 </script>
 
-<Control name="search" position="top-right" class="control-size">
+<CustomControl name="search" position="top-right" class="control-size">
     <div class="text-center p-6">
         <label for="codePostal">Code postal</label>
         <input type="text" bind:value placeholder="Code postal"/>
     </div>
-</Control>
+</CustomControl>

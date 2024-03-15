@@ -4,9 +4,13 @@
     import {type MapboxOptions} from "mapbox-gl";
     import Map from "$lib/Map.svelte";
 
-    import Control from "$lib/Control.svelte";
     import Communes from "./Components/Communes/Source.svelte";
     import Legend from "./Components/Legend.svelte";
+    import AttributionControl from "$lib/control/AttributionControl.svelte";
+    import FullscreenControl from "$lib/control/FullscreenControl.svelte";
+    import NavigationControl from "$lib/control/NavigationControl.svelte";
+    import ScaleControl from "$lib/control/ScaleControl.svelte";
+    import GeolocateControl from "$lib/control/GeolocateControl.svelte";
 
     let token: string = env.PUBLIC_MAPBOX_TOKEN as string;
     let configuration: MapboxOptions = {
@@ -38,8 +42,23 @@
 </script>
 
 <Map bind:map {token} {configuration} class="map-wrapper map-size" on:click={clearSelection}>
+
+
+
+    <GeolocateControl on:geolocate={({detail}) => {console.log(detail.event)}}/>
+    <FullscreenControl/>
+    <NavigationControl/>
+
+    <ScaleControl/>
+
     <Legend/>
+
+    <AttributionControl>
+        <a href="https://optimaize.fr/" target="_blank">© Optim.aize</a>
+    </AttributionControl>
+
     <Communes bind:selected={commune}/>
+
 </Map>
 
 <style>
