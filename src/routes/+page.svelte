@@ -6,6 +6,7 @@
     import {
         Map,
         MapAttributionControl,
+        MapGeocoderControl,
         MapDrawControl,
         MapFullscreenControl,
         MapGeolocateControl,
@@ -53,6 +54,7 @@
     <MapDrawControl on:draw.create={({detail}) => {console.log(detail.event)}}/>
     <MapScaleControl/>
 
+    <MapGeocoderControl countries={['fr']}/>
     <Legend/>
 
     <MapAttributionControl>
@@ -70,7 +72,9 @@
     }
 
     :global(.control-size) {
-        width: 220px;
+        min-width: 240px;
+        width: 33%;
+        max-width: 360px;
         overflow: hidden;
     }
 

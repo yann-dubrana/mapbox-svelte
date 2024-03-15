@@ -6,7 +6,7 @@
 
     export let position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'auto' = 'top-left';
     export let fitBoundsOptions: mapboxgl.FitBoundsOptions = {maxZoom: 15};
-    export let geolocation: Object = window.navigator.geolocation;
+    export let geolocation: any = window.navigator.geolocation;
     export let positionOptions: PositionOptions = {enableHighAccuracy: false, timeout: 6000};
     export let showAccuracyCircle: boolean = true;
     export let showUserHeading: boolean = false;
@@ -52,7 +52,7 @@
 
     onDestroy(() => {
         events.forEach(event => {
-            map.off(event);
+            map?.off(event);
         });
     });
 

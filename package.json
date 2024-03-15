@@ -1,7 +1,7 @@
 {
 	"name": "mapbox-svelte",
 	"license": "MIT",
-	"version": "0.2.3",
+	"version": "0.3.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/yann-dubrana/mapbox-svelte"
@@ -21,7 +21,10 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"svelte": "^4.0.0"
+		"svelte": "^4.0.0",
+		"mapbox-gl": "^3.2.0",
+		"@mapbox/mapbox-gl-draw": "^1.4.3",
+		"@mapbox/mapbox-gl-geocoder": "^5.0.2"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -30,8 +33,11 @@
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@turf/turf": "^6.5.0",
 		"@types/mapbox-gl": "^3.1.0",
+		"@types/mapbox__mapbox-gl-draw": "^1.4.6",
+		"@types/mapbox__mapbox-gl-geocoder": "^5.0.0",
 		"mapbox-gl": "^3.2.0",
 		"@mapbox/mapbox-gl-draw": "^1.4.3",
+		"@mapbox/mapbox-gl-geocoder": "^5.0.2",
 		"publint": "^0.1.9",
 		"svelte": "^4.2.12",
 		"svelte-check": "^3.6.0",

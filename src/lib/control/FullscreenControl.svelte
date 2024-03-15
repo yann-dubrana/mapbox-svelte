@@ -4,7 +4,7 @@
     import mapboxgl from 'mapbox-gl';
     import Control from "./model/Control.svelte";
 
-    export let position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'auto' = 'top-left';
+    export let position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'= 'top-left';
     export let container: string = 'body';
 
     let control: mapboxgl.FullscreenControl;
