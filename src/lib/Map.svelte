@@ -2,6 +2,7 @@
 
     import {createEventDispatcher, onDestroy, onMount, setContext} from 'svelte';
     import mapboxgl from 'mapbox-gl';
+    import {mapEvents as events} from './events.js';
 
     export let token: string;
     export let configuration: mapboxgl.MapboxOptions;
@@ -10,56 +11,7 @@
     export let map: mapboxgl.Map | undefined = undefined;
 
     const mapEventDispatcher = createEventDispatcher();
-    const events = [
-        'boxzoomcancel',
-        'boxzoomend',
-        'boxzoomstart',
-        'click',
-        'contextmenu',
-        'data',
-        'dataloading',
-        'dblclick',
-        'drag',
-        'dragend',
-        'dragstart',
-        'error',
-        'idle',
-        'load',
-        'mousedown',
-        'mouseenter',
-        'mouseleave',
-        'mousemove',
-        'mouseout',
-        'mouseover',
-        'mouseup',
-        'move',
-        'moveend',
-        'movestart',
-        'pitch',
-        'pitchend',
-        'pitchstart',
-        'remove',
-        'render',
-        'resize',
-        'rotate',
-        'rotateend',
-        'rotatestart',
-        'sourcedata',
-        'sourcedataloading',
-        'styledata',
-        'styledataloading',
-        'styleimagemissing',
-        'touchcancel',
-        'touchend',
-        'touchmove',
-        'touchstart',
-        'webglcontextlost',
-        'webglcontextrestored',
-        'wheel',
-        'zoom',
-        'zoomend',
-        'zoomstart',
-    ];
+
 
     setContext("map", {
         get: () => {
@@ -99,6 +51,10 @@
 
 <div id={containerId} class="{$$props.class}"></div>
 
-{#if map && loaded}
-    <slot/>
+{#if mapboxgl.supported()}
+    {#if map && loaded}
+        <slot/>
+    {/if}
+{:else}
+    <p>Mapbox GL is not supported</p>
 {/if}

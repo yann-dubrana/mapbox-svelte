@@ -16,6 +16,7 @@
 
     import Legend from "./Components/Legend.svelte";
     import Communes from "./Components/Communes/Source.svelte";
+    import Marker from "$lib/Marker.svelte";
 
     let token: string = env.PUBLIC_MAPBOX_TOKEN as string;
     let configuration: MapboxOptions = {
@@ -54,7 +55,7 @@
     <MapDrawControl on:draw.create={({detail}) => {console.log(detail.event)}}/>
     <MapScaleControl/>
 
-    <MapGeocoderControl countries={['fr']}/>
+    <MapGeocoderControl countries={'fr'}/>
     <Legend/>
 
     <MapAttributionControl>
@@ -62,6 +63,16 @@
     </MapAttributionControl>
 
     <Communes bind:selected={commune}/>
+
+    <Marker lng={0.7551700188074221} lat={44.403806782279986} markerOptions={{color: "#546"}}/>
+    <Marker lng={0.7051700188074226} lat={44.403806782279986}>
+        <svelte:fragment slot="popup">
+            <div class="p-6">
+                <h1 class="text-xl font-bold">Popup</h1>
+                <p class="text-sm">This is a popup</p>
+            </div>
+        </svelte:fragment>
+    </Marker>
 
 </Map>
 

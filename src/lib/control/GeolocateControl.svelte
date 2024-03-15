@@ -2,9 +2,10 @@
 
     import {createEventDispatcher, getContext, onDestroy, onMount} from "svelte";
     import mapboxgl from 'mapbox-gl';
+    import {geolocateEvents as events} from "../events.js";
     import Control from "./model/Control.svelte";
 
-    export let position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'auto' = 'top-left';
+    export let position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'top-left';
     export let fitBoundsOptions: mapboxgl.FitBoundsOptions = {maxZoom: 15};
     export let geolocation: any = window.navigator.geolocation;
     export let positionOptions: PositionOptions = {enableHighAccuracy: false, timeout: 6000};
@@ -18,14 +19,6 @@
 
     let dispatcher = createEventDispatcher();
     let control: mapboxgl.GeolocateControl;
-
-    const events = [
-        'geolocate',
-        'error',
-        'outofmaxbounds',
-        'trackuserlocationstart',
-        'trackuserlocationend'
-    ];
 
 
     onMount(() => {
@@ -51,8 +44,9 @@
     });
 
     onDestroy(() => {
+        if(!map) return;
         events.forEach(event => {
-            map?.off(event);
+            map.off(event);
         });
     });
 

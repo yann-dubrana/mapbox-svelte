@@ -1,8 +1,8 @@
 <script lang="ts">
 
+    import {onMount, onDestroy, getContext, createEventDispatcher} from "svelte";
     import mapboxgl, {type AnyLayer, type AnyLayout, type AnyPaint, type MapLayerEventType} from "mapbox-gl";
-    import {onMount, onDestroy, getContext} from "svelte";
-    import {createEventDispatcher} from 'svelte';
+    import {layerEvents as events} from "$lib/events.js";
 
     type LayerType =
         "symbol"
@@ -17,21 +17,7 @@
         | "custom"
         | "sky";
 
-    const events = [
-        'mousedown',
-        'mouseup',
-        'click',
-        'dblclick',
-        'mousemove',
-        'mouseenter',
-        'mouseleave',
-        'mouseover',
-        'mouseout',
-        'contextmenu',
-        'touchstart',
-        'touchend',
-        'touchcancel',
-    ];
+
 
     export let type: LayerType;
     export let paint: AnyPaint = {};
