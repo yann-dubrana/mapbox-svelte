@@ -31,9 +31,6 @@
     });
 
     onDestroy(() => {
-        events.forEach((event) => {
-            map?.off(event);
-        });
         map?.remove();
     });
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import {createEventDispatcher, getContext, onDestroy, onMount} from "svelte";
+    import {createEventDispatcher, getContext, onMount} from "svelte";
     import mapboxgl from 'mapbox-gl';
     import {geolocateEvents as events} from "../events.js";
     import Control from "./model/Control.svelte";
@@ -41,13 +41,6 @@
             });
         });
 
-    });
-
-    onDestroy(() => {
-        if(!map) return;
-        events.forEach(event => {
-            map.off(event);
-        });
     });
 
     export const trigger = () => {

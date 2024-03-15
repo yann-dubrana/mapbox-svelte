@@ -1,7 +1,7 @@
 {
 	"name": "mapbox-svelte",
 	"license": "MIT",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/yann-dubrana/mapbox-svelte"
@@ -24,7 +24,8 @@
 		"svelte": "^4.0.0",
 		"mapbox-gl": "^3.2.0",
 		"@mapbox/mapbox-gl-draw": "^1.4.3",
-		"@mapbox/mapbox-gl-geocoder": "^5.0.2"
+		"@mapbox/mapbox-gl-geocoder": "^5.0.2",
+		"@turf/turf": "^6.5.0"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",

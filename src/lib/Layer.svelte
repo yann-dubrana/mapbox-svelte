@@ -54,10 +54,6 @@
 
     onDestroy(() => {
 
-        events.forEach(event => {
-            map.off(event as keyof MapLayerEventType, name);
-        });
-
         if(map.getLayer(name)){
             map.removeLayer(name);
         }

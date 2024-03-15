@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import {createEventDispatcher, getContext, onDestroy, onMount} from "svelte";
+    import {createEventDispatcher, getContext, onMount} from "svelte";
     import mapboxgl from 'mapbox-gl';
     import MapboxDraw from "@mapbox/mapbox-gl-draw";
 
@@ -39,13 +39,6 @@
 
     });
 
-    onDestroy(() => {
-
-        events.forEach(event => {
-            map.off(event);
-        });
-
-    });
 </script>
 
 <Control {position} bind:control/>
