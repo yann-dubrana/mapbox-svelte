@@ -1,5 +1,5 @@
 <script>
-import Layer from "$lib/Layer.svelte";
+import {MapLayer} from "$lib";
 
 export let selected = null;
 
@@ -11,4 +11,4 @@ let onclick = ({detail}) => {selected = detail.event.features[0].properties};
 
 </script>
 
-<Layer {type} {paint} on:mouseenter = {onmouseenter} on:click = {onclick} on:mouseleave = {onmouseleave}/>
+<MapLayer {type} {paint} on:mouseenter = {onmouseenter} on:click = {onclick} on:mouseleave = {onmouseleave}/>

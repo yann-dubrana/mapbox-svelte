@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import CustomControl from "$lib/control/CustomControl.svelte";
+    import {MapCustomControl} from "$lib";
 
     export let commune;
 
@@ -8,9 +8,9 @@
 
 
 {#if commune}
-    <CustomControl name="area-feature" position="top-right" class="control-size">
+    <MapCustomControl name="area-feature" position="top-right" class="control-size">
         <div class="p-6">
             <h3>{commune.name}</h3>
         </div>
-    </CustomControl>
+    </MapCustomControl>
 {/if}

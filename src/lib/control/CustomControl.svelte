@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Control from "$lib/control/model/Control.svelte";
-    import Builder from "$lib/control/model/builder";
+    import Control from "./model/Control.svelte";
+    import Builder from "./model/builder";
     import type {IControl} from "mapbox-gl";
     import {onMount} from "svelte";
 

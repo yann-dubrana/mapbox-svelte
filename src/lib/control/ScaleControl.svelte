@@ -2,7 +2,7 @@
 
     import {onMount} from "svelte";
     import mapboxgl from 'mapbox-gl';
-    import Control from "$lib/control/model/Control.svelte";
+    import Control from "./model/Control.svelte";
 
     type Unit = 'imperial' | 'metric' | 'nautical';
 

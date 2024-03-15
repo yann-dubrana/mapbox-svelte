@@ -2,15 +2,18 @@
     import {env} from "$env/dynamic/public";
 
     import {type MapboxOptions} from "mapbox-gl";
-    import Map from "$lib/Map.svelte";
 
-    import Communes from "./Components/Communes/Source.svelte";
+    import {
+        Map,
+        MapAttributionControl,
+        MapFullscreenControl,
+        MapGeolocateControl,
+        MapNavigationControl,
+        MapScaleControl
+    } from "$lib";
+
     import Legend from "./Components/Legend.svelte";
-    import AttributionControl from "$lib/control/AttributionControl.svelte";
-    import FullscreenControl from "$lib/control/FullscreenControl.svelte";
-    import NavigationControl from "$lib/control/NavigationControl.svelte";
-    import ScaleControl from "$lib/control/ScaleControl.svelte";
-    import GeolocateControl from "$lib/control/GeolocateControl.svelte";
+    import Communes from "./Components/Communes/Source.svelte";
 
     let token: string = env.PUBLIC_MAPBOX_TOKEN as string;
     let configuration: MapboxOptions = {
@@ -43,19 +46,17 @@
 
 <Map bind:map {token} {configuration} class="map-wrapper map-size" on:click={clearSelection}>
 
+    <MapGeolocateControl on:geolocate={({detail}) => {console.log(detail.event)}}/>
+    <MapFullscreenControl/>
+    <MapNavigationControl/>
 
-
-    <GeolocateControl on:geolocate={({detail}) => {console.log(detail.event)}}/>
-    <FullscreenControl/>
-    <NavigationControl/>
-
-    <ScaleControl/>
+    <MapScaleControl/>
 
     <Legend/>
 
-    <AttributionControl>
+    <MapAttributionControl>
         <a href="https://optimaize.fr/" target="_blank">© Optim.aize</a>
-    </AttributionControl>
+    </MapAttributionControl>
 
     <Communes bind:selected={commune}/>
 

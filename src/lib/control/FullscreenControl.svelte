@@ -2,7 +2,7 @@
 
     import {onMount} from "svelte";
     import mapboxgl from 'mapbox-gl';
-    import Control from "$lib/control/model/Control.svelte";
+    import Control from "./model/Control.svelte";
 
     export let position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'auto' = 'top-left';
     export let container: string = 'body';

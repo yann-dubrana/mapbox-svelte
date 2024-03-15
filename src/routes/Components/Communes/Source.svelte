@@ -1,5 +1,5 @@
 <script>
-import Source from "$lib/Source.svelte";
+import {MapSource} from "$lib";
 
 import FillArea from "./Layers/Fill.svelte";
 import LineArea from "./Layers/Line.svelte";
@@ -42,10 +42,10 @@ $: {
 
 </script>
 
-<Source name="communes-33650" type="geojson" bind:data autofit fitBoundsOptions={{"padding": 180}}>
+<MapSource name="communes-33650" type="geojson" bind:data {autofit} fitBoundsOptions={{"padding": 180}}>
     <FillArea bind:selected/>
     <LineArea/>
-</Source>
+</MapSource>
 
 <ControlSearch bind:codePostal />
 <ControlFeature bind:commune={selected} />
