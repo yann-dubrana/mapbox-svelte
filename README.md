@@ -1,3 +1,5 @@
+/!\ This is not a great version, not sure if any type of source is supported. mapbow-svelte-5 based on runes is on the way. /!\
+
 ## Svelte MapBox
 
 A simple, lightweight, and flexible Svelte wrapper for MapBox. It's designed to be as simple as possible to use, and to be as flexible as possible to use.
